@@ -66,3 +66,19 @@ for element in users:
     print("trying with for", element["name"], element["age"])
 
 
+cars = [
+    {"model": "Model S", "year": 2022, "brand": "Tesla"},
+    {"model": "Civic", "year": 2021, "brand": "Honda"},
+    {"model": "Mustang", "year": 2020, "brand": "Ford"},
+    {"model": "Corolla", "year": 2019, "brand": "Toyota"},
+    {"model": "Accord", "year": 2018, "brand": "Honda"},
+    {"model": "Model 3", "year": 2022, "brand": "Tesla"},
+    {"model": "Camry", "year": 2021, "brand": "Toyota"},
+    {"model": "Challenger", "year": 2020, "brand": "Dodge"},
+    {"model": "Altima", "year": 2019, "brand": "Nissan"},
+    {"model": "Explorer", "year": 2018, "brand": "Ford"}
+]
+
+for car in cars:
+    print("Car model :",car["model"], "year of manufucturing :", car["year"])
+
