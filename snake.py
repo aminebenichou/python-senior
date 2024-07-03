@@ -38,7 +38,7 @@ class Food:
     
 
 class Player:
-    x, y = 0, 0
+    body=[(0,0)]
     height, width = 0, 0
     color = (0,0,0)
     speed = 0
@@ -47,16 +47,20 @@ class Player:
     lost = False
 
     def drawPlayer(self):
-        pygame.draw.rect(window, self.color, pygame.Rect(self.x, self.y, self.width, self.height))
+        for piece in self.body :
+            pygame.draw.rect(window, self.color, pygame.Rect(piece[0], piece[1], self.width, self.height))
 
     def getPlayerPosition(self):
-        return (self.x, self.y)
+        head = self.body[0]
+        return (head[0], head[1])
     def checkForlimits(self):
-        if self.x + self.width/2 >= window_width or self.y + self.height/2 >= window_height or self.x + self.width/2 <= 0 or self.y + self.height/2 <= 0:
+        head = self.body[0]
+        if head[0] + self.width/2 >= window_width or head[1] + self.height/2 >= window_height or head[0] + self.width/2 <= 0 or head[1] + self.height/2 <= 0:
             self.lost = True
         return self.lost
     def movePlayer(self):
         keys = pygame.key.get_pressed()
+        x, y = self.body[0]
         
         if keys[pygame.K_UP] :
             self.direction = "UP"
@@ -69,19 +73,21 @@ class Player:
 
 
         if self.direction == "RIGHT":
-            self.x += self.speed
+            x += self.speed
         if self.direction == "UP":
-            self.y -= self.speed
+            y -= self.speed
         if self.direction == "DOWN":
-            self.y += self.speed
+            y += self.speed
         if self.direction == "LEFT":
-            self.x -= self.speed
+            x -= self.speed
+
+        new_head = (x, y)
+        self.body = [new_head] + self.body[:-1]
     def game_over(self):
         pygame.quit()
 
 snake = Player()
-snake.x = 200
-snake.y = 200
+snake.body = [(100,100)]
 snake.height = 20
 snake.width = 20
 snake.color = (0,0,230)
