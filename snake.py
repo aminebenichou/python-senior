@@ -38,13 +38,13 @@ class Food:
     
 
 class Player:
-    body=[(0,0)]
     height, width = 0, 0
     color = (0,0,0)
     speed = 0
     direction = ""
     score=0
     lost = False
+    body=[(0,0)]
 
     def drawPlayer(self):
         for piece in self.body :
