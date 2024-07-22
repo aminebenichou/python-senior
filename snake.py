@@ -83,6 +83,9 @@ class Player:
 
         new_head = (x, y)
         self.body = [new_head] + self.body[:-1]
+
+    def grow(self):
+        self.body.append(self.getPlayerPosition())
     def game_over(self):
         pygame.quit()
 
@@ -91,7 +94,7 @@ snake.body = [(100,100)]
 snake.height = 20
 snake.width = 20
 snake.color = (0,0,230)
-snake.speed = 1
+snake.speed = 10
 food = Food()
 while running:
     for event in pygame.event.get():
@@ -102,6 +105,7 @@ while running:
     food.createFood()
     if food.eaten(snake.getPlayerPosition()) :
         snake.score += 10
+        
     
     snake.drawPlayer()
     font = pygame.font.Font(None, 36)
