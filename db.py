@@ -41,4 +41,16 @@ def delete_row(id):
     )
     conn.commit()
 
-delete_row(2)
+
+
+def retrieve_items():
+    result = []
+    rows = cursor.execute(
+        f'''SELECT * FROM todoitems;'''
+    )
+
+    for row in rows:
+        result.append(row)
+
+    return result
+print(retrieve_items())
